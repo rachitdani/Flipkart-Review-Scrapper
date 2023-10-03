@@ -74,11 +74,6 @@ def index():
                 reviews.append(mydict)
             logging.info("log my final result {}".format(reviews))
 
-            client = pymongo.MongoClient("mongodb+srv://rachitdani19:mongodb@cluster0.t7wy4vx.mongodb.net/")
-            db =client['scrapper_demo']
-            coll_pw_eng = db['scraper_data']
-            coll_pw_eng.insert_many(reviews)
-
             return render_template('result.html', reviews=reviews[0:(len(reviews)-1)])
         except Exception as e:
             logging.info(e)
